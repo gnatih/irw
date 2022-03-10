@@ -1,21 +1,41 @@
 <template>
-  <div>
-    <nav>
-      <router-link class="nav-item" to="/">Home</router-link>
-      <router-link to="/about">About</router-link>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarSupportedContent" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <router-link class="nav-link" to="/">Home</router-link>
+          </li>
 
-      <template v-if="categories.length">
-        <router-link
-          v-for="category in categories"
-          :key="category"
-          :to="'/category/' + category"
-          >{{ category }}</router-link
-        >
-      </template>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/about">About</router-link>
+          </li>
 
-      <router-link to="/contact">Contact</router-link>
-    </nav>
-  </div>
+          <li v-for="category in categories" :key="category" class="nav-item">
+            <router-link class="nav-link" :to="'/category/' + category">{{
+              category
+            }}</router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link class="nav-link" to="/contact">Contact</router-link>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </template>
 
 <script>

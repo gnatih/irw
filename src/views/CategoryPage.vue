@@ -1,5 +1,11 @@
 <template>
-  <div>Category</div>
+  <h2>{{ category }}</h2>
+
+  <div>
+    <div v-for="story in stories" :key="story.ID">
+      {{ story.AUTHORS }}
+    </div>
+  </div>
 </template>
 
 <script>
@@ -12,6 +18,7 @@ export default {
     const sheetId = "1syfH86e54jCh2Dp6y3GwTjTWG_Vn9ubg1yH_FQe4h4s";
     const route = useRoute();
     const refs = ref([]);
+    const stories = ref([]);
     let category = route.params.slug;
 
     const load = async () => {
@@ -32,22 +39,28 @@ export default {
       });
 
       //   const stories = _.groupBy(refs.value, "MUSEUMNAME");
-      const stories = [];
-      //   const stories = ref([]);
+      const museum_people = [];
+      //   const museum_people = ref([]);
       _.map(values, (photo) => {
-        let museum = photo.MUSEUMNAME.trim();
-        if (!stories[`${museum}-${photo.CN}`]) {
-          stories[`${museum}-${photo.CN}`] = [];
+        let museum = photo["MUSEUM CODE"].trim();
+        if (!museum_people[`${museum}-${photo.CN}`]) {
+          museum_people[`${museum}-${photo.CN}`] = [];
         }
-        stories[`${museum}-${photo.CN}`].push(photo);
+        museum_people[`${museum}-${photo.CN}`].push(photo);
       });
 
-      console.log(stories);
+      for (const museum_person in museum_people) {
+        let story_groups = _.groupBy(museum_people[museum_person], "STORY");
 
-      //   console.log(stories.value);
+        for (const story in story_groups) {
+          stories.value.push(story_groups[story][0]);
+        }
+      }
     };
 
     load();
+
+    return { category, stories };
   },
 };
 </script>

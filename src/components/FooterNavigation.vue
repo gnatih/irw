@@ -1,11 +1,8 @@
 <template>
-  <div>
-    <nav>
-      <ul>
-        <li>hello world</li>
-      </ul>
-    </nav>
-  </div>
+  <footer>
+    <hr />
+    &copy; Global Network of Water Museums 2022 | All Rights Reserved
+  </footer>
 </template>
 
 <script>
