@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
+    <div class="container">
       <a class="navbar-brand" href="#">Navbar</a>
       <button
         class="navbar-toggler"
@@ -39,8 +39,6 @@
 </template>
 
 <script>
-// import _ from "lodash";
-
 export default {
   props: {
     categories: {
@@ -48,15 +46,5 @@ export default {
       required: true,
     },
   },
-  setup(props) {
-    console.log(props.categories);
-  },
 };
 </script>
-
-<style scoped>
-a {
-  margin: 0 8px;
-  text-decoration: none;
-}
-</style>
