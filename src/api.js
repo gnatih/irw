@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { uniq, map, first, compact, chain, isEmpty } from "lodash";
 import { ref } from "vue";
 
 const fetchData = async () => {
@@ -9,22 +9,22 @@ const fetchData = async () => {
 
 const createCategories = function (data) {
   let terms = [
-    ..._.uniq(_.map(data, "C1")),
-    ..._.uniq(_.map(data, "C2")),
-    ..._.uniq(_.map(data, "C3")),
-    ..._.uniq(_.map(data, "C4")),
+    ...uniq(map(data, "C1")),
+    ...uniq(map(data, "C2")),
+    ...uniq(map(data, "C3")),
+    ...uniq(map(data, "C4")),
   ];
 
-  const categories = _.compact(_.uniq(terms)).sort();
+  const categories = compact(uniq(terms)).sort();
   return categories;
 };
 
 const createStories = function (data) {
-  let stories = _.chain(data)
+  let stories = chain(data)
     .groupBy((item) => `${item["MUSEUM CODE"]}--${item.CN}--${item.STORY}`)
     .value();
 
-  return _.map(stories, (story) => _.first(story));
+  return map(stories, (story) => first(story));
 };
 
 export default function loadData() {
@@ -35,7 +35,7 @@ export default function loadData() {
   let data = [];
   let reload = url.searchParams.get("refresh") == "";
 
-  if (!storage || reload || _.isEmpty(storage)) {
+  if (!storage || reload || isEmpty(storage)) {
     console.log("fetching data");
     (async () => {
       data = await fetchData();

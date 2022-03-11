@@ -13,7 +13,7 @@
 <script>
 import { useRoute } from "vue-router";
 import loadData from "../api";
-import _ from "lodash";
+import filter from "lodash/filter";
 import { computed } from "@vue/runtime-core";
 
 export default {
@@ -32,7 +32,7 @@ export default {
     // );
 
     const filtered_stories = computed(() =>
-      _.filter(
+      filter(
         stories.value,
         (story) =>
           story.C1 == category.value ||
