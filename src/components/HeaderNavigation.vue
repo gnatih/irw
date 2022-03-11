@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="#">IRW</a>
       <button
         class="navbar-toggler"
         type="button"
