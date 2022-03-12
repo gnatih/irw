@@ -1,6 +1,6 @@
 <template>
   <div class="container main">
-    <h2>{{ category }}</h2>
+    <h2 class="page-title">{{ category }}</h2>
 
     <div class="row row-cols g-2">
       <div v-for="story in filtered_stories" :key="story.ID" class="col-4">

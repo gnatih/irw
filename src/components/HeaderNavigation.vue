@@ -1,7 +1,9 @@
 <template>
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg p-0 mb-5">
     <div class="container">
-      <a class="navbar-brand" href="#">IRW</a>
+      <a class="navbar-brand p-0" href="#"
+        ><img src="/images/irw-logo.png" class="img-fluid" width="200"
+      /></a>
       <button
         class="navbar-toggler"
         type="button"
