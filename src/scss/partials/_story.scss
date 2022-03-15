@@ -1,0 +1,18 @@
+.story-slide {
+  min-height: 580px;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+}
+.story-info {
+  td {
+    vertical-align: top;
+    padding: 6px;
+  }
+  td:first-child {
+    color: $primary;
+    text-align: right;
+    padding-right: 15px;
+    vertical-align: top;
+  }
+}

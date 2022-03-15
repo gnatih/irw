@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "../views/HomePage.vue";
-import ContactPage from "../views/ContactPage";
 import AboutPage from "../views/AboutPage";
 import StoryPage from "../views/StoryPage";
 import CategoryPage from "../views/CategoryPage";
@@ -17,7 +16,7 @@ const routes = [
     component: CategoryPage,
   },
   {
-    path: "/story/:slug",
+    path: "/story/:sid",
     name: "story",
     component: StoryPage,
   },
@@ -25,11 +24,6 @@ const routes = [
     path: "/about",
     name: "about",
     component: AboutPage,
-  },
-  {
-    path: "/contact",
-    name: "contact",
-    component: ContactPage,
   },
 ];
 

@@ -25,14 +25,20 @@
             <router-link class="nav-link" to="/about">About</router-link>
           </li>
 
-          <li v-for="category in categories" :key="category" class="nav-item">
-            <router-link class="nav-link" :to="'/category/' + category">{{
-              category
+          <li
+            v-for="(category, index) in store.state.categories"
+            :key="index"
+            class="nav-item"
+          >
+            <router-link class="nav-link" :to="'/category/' + category.Title">{{
+              category.Title
             }}</router-link>
           </li>
 
           <li class="nav-item">
-            <router-link class="nav-link" to="/contact">Contact</router-link>
+            <a href="https://google.com" class="nav-link" target="_blank"
+              >Contact</a
+            >
           </li>
         </ul>
       </div>
@@ -41,12 +47,12 @@
 </template>
 
 <script>
+import { inject } from "@vue/runtime-core";
+
 export default {
-  props: {
-    categories: {
-      type: Array,
-      required: true,
-    },
+  setup() {
+    const store = inject("store");
+    return { store };
   },
 };
 </script>
