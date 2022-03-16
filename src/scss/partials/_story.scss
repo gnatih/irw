@@ -16,3 +16,22 @@
     vertical-align: top;
   }
 }
+
+.thumbs-swiper {
+  height: 142px;
+  box-sizing: border-box;
+  padding: 10px 0;
+
+  .swiper-slide {
+    opacity: 0.4;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #ccc;
+    background-position: center;
+  }
+
+  .swiper-slide-thumb-active {
+    opacity: 1;
+  }
+}
