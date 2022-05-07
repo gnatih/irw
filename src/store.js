@@ -27,6 +27,10 @@ const methods = {
         (r) => r.json()
       );
 
+      const exhibition_data = await fetch(
+        `${service}/${sheetId}/Exhibition`
+      ).then((r) => r.json());
+
       const categories = await fetch(`${service}/${sheetId}/Categories`).then(
         (r) => r.json()
       );
@@ -55,6 +59,7 @@ const methods = {
           data: stories_data,
           stories,
           categories,
+          exhibition: exhibition_data,
         })
       );
     } else {
@@ -63,6 +68,7 @@ const methods = {
       state.data = data.data;
       state.categories = sortBy(data.categories, "Title");
       state.stories = data.stories;
+      state.exhibition = data.exhibition;
     }
   },
 };

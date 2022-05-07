@@ -1,21 +1,42 @@
 <template>
-  <footer class="text-center pb-3">
-    <div class="partners container">
-      <div class="row g-5">
-        <div class="col-md-4">
-          <img src="/images/irw-logo.png" alt="" class="img-fluid" />
+  <footer class="my-5">
+    <div class="d-flex container justify-content-center">
+      <div class="row gx-3">
+        <div class="footer-nav col">
+          <a href="#" class="d-block">Terms & Conditions</a>
+          <a
+            href="https://www.watermuseums.net/contacts/"
+            target="_blank"
+            class="d-block"
+            >Contact Us</a
+          >
+          <div class="social-icons">
+            <a href="#">facebook</a>
+            <a href="#">insta</a>
+            <a href="#">twitter</a>
+          </div>
         </div>
-        <div class="col-md-4">
-          <img src="/images/WAMUNET.jpg" alt="" class="img-fluid" />
+        <div class="col">
+          <img
+            src="/images/irw-logo.png"
+            alt="I Remember Water"
+            width="300"
+            class="img-fluid"
+          />
         </div>
-        <div class="col-md-4">
-          <img src="/images/LWM.png" alt="" class="img-fluid" />
+        <div class="col">&nbsp;</div>
+        <div class="col">
+          <a href="https://www.watermuseums.net/" target="_blank"
+            ><img src="/images/wamunet-logo.png" width="300" alt=""
+          /></a>
+        </div>
+        <div class="col align-self-flex-end">
+          <p style="margin-top: -3em">Supported by</p>
+          <a href="https://www.livingwatersmuseum.org/" target="_blank"
+            ><img src="/images/LWM.png" alt="Living Waters Museum" width="200"
+          /></a>
         </div>
       </div>
-    </div>
-    <hr />
-    <div class="container">
-      &copy; Global Network of Water Museums 2022 | All Rights Reserved
     </div>
   </footer>
 </template>

@@ -19,21 +19,19 @@
     </div>
     <div class="col-md-8 text-columns-2">
       <p>
-        A new “culture of water” cannot grow without memory. Memories, whether
+        A new "culture of water" cannot grow without memory. Memories, whether
         they are sensory or emotional, short-term or long-term, material or
         immaterial, are fundamental to our existence as individuals and as
         collective societies. The curatorial team of this exhibition selected a
         number of meaningful images that recall our past water memories and
         reflect on pathways that can help us shape our water futures.
       </p>
-
       <p>
         From the ornate public fountains and standpipes that provided free water
         to citizens in bustling cities, to the ancient civilizations that have
         flourished along rivers and waterways, water has shaped our landscape
         across time and space, from Europe to Africa, from Asia to the Americas.
       </p>
-
       <p>
         However, while water is at the core of our bodies, our livelihoods and
         our social relationships, water resources have been dammed, depleted or
@@ -41,14 +39,12 @@
         development and growing transboundary conflicts. It's likely that in the
         future water will have enormous economic value, as the 'new petroleum'.
       </p>
-
       <p>
         Climate change has not only accentuated our failure to use and manage
         water wisely, but the dangers of too little or too much water (drought,
         floods and rising sea levels) have posed new challenges to global water
         governance.
       </p>
-
       <p>
         If we want to address the next global water challenges, we need to find
         new ways to connect people with their water heritage, so that we can
@@ -59,21 +55,31 @@
     </div>
   </div>
 
-  <div class="break--top"></div>
+  <div class="break--top">
+    <img src="/images/break-top.svg" alt="break-top" />
+  </div>
 
   <div class="row">
-    <div class="col-md-6 mx-auto py-3">
+    <div class="col-md-8 mx-auto py-3">
       <div
         class="d-inline-block rounded-circle bg-light ratio ratio-1x1"
         style="width: 80px"
       ></div>
       <h3 class="my-3 text-uppercase">Exhibition</h3>
-      <div class="bg-light p-4 d-flex">
+      <div class="bg-light p-4 d-flex align-items-center">
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis,
-          laboriosam sunt, dignissimos similique quam sed voluptatum sequi
-          exercitationem distinctio ut voluptatibus? Doloribus commodi
-          praesentium cumque debitis. Consectetur eaque enim sed?
+          In this section, the curatorial team has selected the most
+          representative images from 60 participating institutions and 6 artists
+          from around the world to create an exhibition 'in hand' -
+          <b>a taster of the different 'water worlds' exhibited by museums</b>
+          affiliated to WAMU-NET. This selection is now available to all
+          partners to illustrate
+          <b
+            >the diversity and similarity of humankind's connections with water
+            and its heritage</b
+          >. Images have been selected through a democratic process which
+          involved all curators in intensive discussions to ensure that all
+          pictures conveyed universal water memories.
         </p>
         <div class="mx-4">
           <a
@@ -87,8 +93,8 @@
   </div>
 
   <div class="row">
-    <div class="col-md-6 mx-auto text-center py-3">
-      <h3 class="text-center my-3 text-uppercase">Categories</h3>
+    <div class="col-md-8 mx-auto py-3">
+      <h3 class="my-3 text-uppercase">Categories</h3>
       <p>
         In all, we received around 600 images and the curatorial team selected
         462 from these to show vibrant and historical relationships with the
@@ -100,14 +106,76 @@
         selected by an individual curator after hours of inspiring collective
         discussions.
       </p>
-      <a href="#" class="d-inline-block btn btn-primary my-3">VIEW</a>
     </div>
   </div>
-  <hr class="mb-5" />
+
+  <div class="row">
+    <div class="category-tabs col-md-8 mx-auto py-3">
+      <ul class="nav nav-tabs nav-fill" id="category-tabs" role="tablist">
+        <li
+          class="nav-item"
+          role="presentation"
+          v-for="(category, index) in categories"
+          :key="category.Priority"
+        >
+          <button
+            :class="{ 'nav-link': true, active: index == 0 }"
+            data-bs-toggle="tab"
+            :data-bs-target="`#${category.Category}-tab`"
+            type="button"
+            role="tab"
+            aria-controls="#"
+            aria-selected="true"
+          >
+            <img
+              :src="`/images/icon_${category.Category.toLowerCase()}.svg`"
+              :alt="category.Category"
+            />
+            <div>{{ category.Category }}</div>
+          </button>
+        </li>
+      </ul>
+      <div class="tab-content my-2 bg-light p-3" id="category-tabs-content">
+        <div
+          :class="{ 'tab-pane': true, 'show active': index == 0 }"
+          :id="`${category.Category}-tab`"
+          role="tabpanel"
+          :aria-labelledby="`${category.Category}-tab`"
+          v-for="(category, index) in categories"
+          :key="category.Priority"
+        >
+          <div class="d-flex align-items-center">
+            <div>{{ category.short_text }}</div>
+            <div class="mx-4">
+              <a
+                :href="`/category/${category.Category}`"
+                class="d-inline-block btn btn-secondary my-3 text-uppercase"
+                >VIEW</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="break--bottom">
+    <img src="/images/break-bottom.svg" alt="bottom-break" />
+  </div>
 </template>
 
 <script>
+import { inject } from "@vue/runtime-core";
+
 export default {
   name: "HomePage",
+  setup() {
+    const store = inject("store");
+    console.log(store.state.Exhibition);
+
+    return {
+      categories: store.state.categories,
+    };
+  },
 };
 </script>

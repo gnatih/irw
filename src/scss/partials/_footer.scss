@@ -1,0 +1,11 @@
+footer {
+  font-size: 13px;
+
+  .footer-nav {
+    a {
+      color: $primary;
+      text-decoration: none;
+      margin-bottom: 8px;
+    }
+  }
+}

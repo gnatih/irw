@@ -1,0 +1,24 @@
+.category-tabs {
+  .nav-item {
+    button {
+      font-size: 14px;
+      color: $gray-800;
+    }
+
+    img {
+      width: 80px;
+      height: 80px;
+      display: inline-block;
+    }
+  }
+
+  .nav-tabs {
+    border: none;
+  }
+
+  button.nav-link:hover,
+  button.nav-link.active {
+    border: none;
+    background: $light;
+  }
+}

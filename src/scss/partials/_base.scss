@@ -1,24 +1,23 @@
 @each $num_columns, $apply in $responsive_text_columns {
   .text-columns-#{$num_columns} {
-      -webkit-column-count: 1;
-      -moz-column-count: 1;
-      column-count: 1;
-      -webkit-column-gap: 0em;
-      -moz-column-gap: 0em;
-      column-gap: 0em;
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+    -webkit-column-gap: 0em;
+    -moz-column-gap: 0em;
+    column-gap: 0em;
   }
-  @each $scale in ("sm", "md", "lg", "xl")
-  {
-      @include media-breakpoint-up($scale) {
-          .text-columns-#{$num_columns} {
-              -webkit-column-count: map-get(map-get($apply , $scale ), "cols");
-              -moz-column-count: map-get(map-get($apply , $scale ), "cols");
-              column-count: map-get(map-get($apply , $scale ), "cols");
-              -webkit-column-gap: map-get(map-get($apply , $scale ), "gutter");
-              -moz-column-gap: map-get(map-get($apply , $scale ), "gutter");
-              column-gap: map-get(map-get($apply , $scale ), "gutter");
-          }
+  @each $scale in ("sm", "md", "lg", "xl") {
+    @include media-breakpoint-up($scale) {
+      .text-columns-#{$num_columns} {
+        -webkit-column-count: map-get(map-get($apply, $scale), "cols");
+        -moz-column-count: map-get(map-get($apply, $scale), "cols");
+        column-count: map-get(map-get($apply, $scale), "cols");
+        -webkit-column-gap: map-get(map-get($apply, $scale), "gutter");
+        -moz-column-gap: map-get(map-get($apply, $scale), "gutter");
+        column-gap: map-get(map-get($apply, $scale), "gutter");
       }
+    }
   }
 }
 
