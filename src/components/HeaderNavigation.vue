@@ -30,9 +30,11 @@
             :key="index"
             class="nav-item"
           >
-            <router-link class="nav-link" :to="'/category/' + category.Title">{{
-              category.Title
-            }}</router-link>
+            <router-link
+              class="nav-link"
+              :to="'/category/' + category['Category']"
+              >{{ category.Category }}</router-link
+            >
           </li>
 
           <li class="nav-item">

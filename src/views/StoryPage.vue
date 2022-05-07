@@ -6,8 +6,8 @@
         :modules="[Navigation, Thumbs]"
         :pagination="{ clickable: true }"
         navigation
-        @slide-change="slideChange"
         :thumbs="{ swiper: thumbsSwiper }"
+        @slide-change="slideChange"
       >
         <template v-for="story in stories" :key="story.ID">
           <swiper-slide

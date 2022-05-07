@@ -54,27 +54,17 @@ export default {
     const store = inject("store");
     const route = useRoute();
     const category = computed(() => route.params.slug);
-    // const msnry = ref(null);
     const classObject = computed(() => ({
       "exhibit row-cols-2": category.value == "Exhibition",
       "row-cols-3": category.value !== "Exhibition",
     }));
 
-    let filtered_stories = computed(() =>
-      store.state.stories.filter((story) => story[category.value] == "1")
-    );
-
-    // nextTick(() => {
-    //   msnry.value = new masonry(".masonry", { percentPosition: true });
-    // });
-
-    // onUpdated(() => {
-    //   nextTick(() => {
-    //     msnry.value = new masonry(".masonry", {
-    //       percentPosition: true,
-    //     }).layout();
-    //   });
-    // });
+    let filtered_stories = computed(() => {
+      console.log(store.state.stories);
+      return store.state.stories.filter((story) => {
+        console.log(story);
+      });
+    });
 
     return { category, store, filtered_stories, classObject };
   },

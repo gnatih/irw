@@ -1,10 +1,8 @@
 import { reactive } from "vue";
-import { scale } from "@cloudinary/url-gen/actions/resize";
 import first from "lodash/first";
 import map from "lodash/map";
 import sortBy from "lodash/sortBy";
-import groupBy from "lodash/groupBy";
-import { Cloudinary } from "@cloudinary/url-gen";
+import { chain } from "lodash";
 
 const state = reactive({
   data: [],
@@ -15,7 +13,7 @@ const state = reactive({
 
 const methods = {
   async loadData() {
-    const sheetId = "1syfH86e54jCh2Dp6y3GwTjTWG_Vn9ubg1yH_FQe4h4s";
+    const sheetId = "1grkdfQVI6GV-_cJuJQPdDpv9b_5IuS3nDvZPw5ehqzM";
     const service = "https://opensheet.elk.sh";
     const url = new URL(window.location);
     const reload = url.searchParams.get("refresh") == "";
@@ -23,14 +21,7 @@ const methods = {
 
     if (!storage || reload) {
       console.log("..fetch data");
-      const cld = new Cloudinary({
-        cloud: {
-          cloudName: "merasite",
-        },
-        url: {
-          secure: true,
-        },
-      });
+      console.log(`${service}/${sheetId}/Entries`);
 
       const stories_data = await fetch(`${service}/${sheetId}/Entries`).then(
         (r) => r.json()
@@ -41,37 +32,22 @@ const methods = {
       );
 
       for (const key in stories_data) {
-        const name = stories_data[key]["UNIVOCAL CODE"].replace(/[ ]+/g, "_");
-        await fetch(
-          `https://res.cloudinary.com/merasite/image/upload/fl_getinfo/IRW/${name}`
-        )
-          .then((r) => {
-            if (r.ok) {
-              return r.json();
-            }
-          })
-          .then((result) => {
-            if (result) {
-              stories_data[key].image = {
-                thumb: cld
-                  .image(`IRW/${name}`)
-                  .resize(scale().width(600))
-                  .format("jpg")
-                  .toURL(),
-                large: cld.image(`IRW/${name}`).format("jpg").toURL(),
-                width: result.input.width,
-                height: result.input.height,
-              };
-            }
-          });
+        const name = stories_data[key]["UNIVOCALCODE"];
+        stories_data[key].image = {
+          thumb: `/images/thumbs/${name}`,
+          large: `/images/large/${name}`,
+        };
       }
 
-      const stories_groups = groupBy(stories_data, "ID");
+      const stories_groups = chain(stories_data)
+        .groupBy((item) => `${item.STORY}--${item.MUSEUMNAME}`)
+        .value();
+
       const stories = map(stories_groups, (story) => first(story));
 
       state.data = stories_data;
       state.stories = stories;
-      state.categories = sortBy(categories, "Title");
+      state.categories = sortBy(categories, "Priority");
 
       localStorage.setItem(
         "irw-storage",
