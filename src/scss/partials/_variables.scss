@@ -5,4 +5,11 @@ $headings-color: $primary;
 $enable-gradients: false;
 $enable-shadows: false;
 $nav-link-font-size: 18px;
-$body-color: $gray-600;
+$body-color: $gray-800;
+
+$responsive_text_columns : (
+    1: (sm: (cols: 1, gutter: 0rem), md: (cols: 1, gutter: 0rem), lg: (cols: 1, gutter: 0rem), xl: (cols: 1, gutter: 0rem)),
+    2: (sm: (cols: 1, gutter: 0rem), md: (cols: 1, gutter: 0rem), lg: (cols: 2, gutter: 1.2rem), xl: (cols: 2, gutter: 1.5rem)),
+    3: (sm: (cols: 1, gutter: 0rem), md: (cols: 2, gutter: 1rem), lg: (cols: 3, gutter: 1.2rem), xl: (cols: 3, gutter: 1.5rem)),
+    4: (sm: (cols: 1, gutter: 0rem), md: (cols: 2, gutter: 1rem), lg: (cols: 4, gutter: 1.2rem), xl: (cols: 4, gutter: 1.5rem)),
+);
