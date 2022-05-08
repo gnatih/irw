@@ -32,3 +32,14 @@
     }
   }
 }
+
+.exhibitions-swiper-wrapper {
+  position: relative;
+  .swiper-button-prev {
+    left: -32px;
+  }
+
+  .swiper-button-next {
+    right: -32px;
+  }
+}

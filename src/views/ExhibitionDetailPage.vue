@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <category-header :category="exhibition.CATEGORY.charAt(0) + exhibition.CATEGORY.slice(1)"></category-header>
+    <category-header :category="'Exhibition'"></category-header>
   </div>
 
   <div class="break-top mb-5"><img src="/images/break-bottom.svg" /></div>
