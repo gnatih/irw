@@ -5,6 +5,7 @@ import StoryPage from "../views/StoryPage";
 import CategoryPage from "../views/CategoryPage";
 import ExhibitionPage from "../views/ExhibitionPage";
 import ExhibitionDetailPage from "../views/ExhibitionDetailPage";
+import TermsPage from "../views/TermsPage";
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: "/about",
     name: "about",
     component: AboutPage,
+  },
+  {
+    path: "/terms-and-conditions",
+    name: "terms",
+    component: TermsPage,
   },
 ];
 

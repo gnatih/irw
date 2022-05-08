@@ -24,6 +24,8 @@
         <a href="https://www.livingwatersmuseum.org/" target="_blank"><img src="/images/LWM.png" alt="Living Waters Museum" width="200" /></a>
       </div>
     </div>
+
+    <div class="text-center my-5">&copy; Global Network of Water Museums 2022 | All rights reserved</div>
   </footer>
 </template>
 

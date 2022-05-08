@@ -36,7 +36,7 @@
         <div class="bg-light p-4 d-flex align-items-center">
           <p>In this section, the curatorial team has selected the most representative images from 60 participating institutions and 6 artists from around the world to create an exhibition 'in hand' - <b>a taster of the different 'water worlds' exhibited by museums</b> affiliated to WAMU-NET. This selection is now available to all partners to illustrate <b>the diversity and similarity of humankind's connections with water and its heritage</b>. Images have been selected through a democratic process which involved all curators in intensive discussions to ensure that all pictures conveyed universal water memories.</p>
           <div class="mx-4">
-            <a href="/category/Exhibition" class="d-inline-block btn btn-secondary my-3 text-uppercase">VIEW</a>
+            <a href="/exhibition" class="d-inline-block btn btn-secondary my-3 text-uppercase">VIEW</a>
           </div>
         </div>
       </div>
