@@ -66,11 +66,10 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 mx-auto py-3">
-        <div
-          class="d-inline-block rounded-circle bg-light ratio ratio-1x1"
-          style="width: 80px"
-        ></div>
-        <h3 class="my-3 text-uppercase">Exhibition</h3>
+        <div class="d-inline-block" style="width: 120px">
+          <img src="/images/icon_exhibition.svg" alt="Exhibition" />
+        </div>
+        <h3 class="mb-3 text-uppercase">Exhibition</h3>
         <div class="bg-light p-4 d-flex align-items-center">
           <p>
             In this section, the curatorial team has selected the most
