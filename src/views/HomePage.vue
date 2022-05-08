@@ -171,16 +171,16 @@
 </template>
 
 <script>
-import { inject } from "@vue/runtime-core";
+import { computed, inject } from "@vue/runtime-core";
 
 export default {
   name: "HomePage",
   setup() {
     const store = inject("store");
-    console.log(store.state.Exhibition);
+    let categories = computed(() => store.state.categories);
 
     return {
-      categories: store.state.categories,
+      categories,
     };
   },
 };

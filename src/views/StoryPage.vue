@@ -83,9 +83,9 @@ export default {
     const slide = ref(0);
     const thumbsSwiper = ref(null);
     const sid = route.params.sid;
-    const stories = computed(() => {
-      return store.state.data.filter((story) => parseInt(story.ID) == sid);
-    });
+    const stories = computed(() =>
+      store.state.data.filter((story) => parseInt(story.ID) == sid)
+    );
 
     const slideChange = (i) => {
       slide.value = i.activeIndex;
