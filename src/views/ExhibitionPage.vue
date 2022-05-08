@@ -2,6 +2,7 @@
   <div class="container">
     <category-header category="Exhibition"></category-header>
   </div>
+  <div class="break--top mb-5"><img src="/images/break-bottom.svg" /></div>
 
   <div class="container">
     <div class="row">
@@ -9,14 +10,14 @@
     </div>
   </div>
 
-  <div class="break--top mt-5"><img src="/images/break-bottom.svg" /></div>
-
   <div class="container main">
     <div class="exhibition-grid">
       <div v-for="exhibition in exhibitions" :key="exhibition.TITLE" class="exhibition-tile">
-        <img :src="`${exhibition.image.thumb}`" :alt="exhibition.TITLE" class="shadow img-fluid w-100" />
-        <h4 class="mt-3">{{ exhibition.TITLE }}</h4>
-        <span class="">{{ exhibition.COUNTRY }} | Category: {{ exhibition.CATEGORY }}</span>
+        <a :href="`/exhibition/${exhibition.UUID}`"
+          ><img :src="`${exhibition.image.thumb}`" :alt="exhibition.TITLE" class="shadow img-fluid w-100" />
+          <h4 class="mt-3">{{ exhibition.TITLE }}</h4>
+          <span class="">{{ exhibition.COUNTRY }} | Category: {{ exhibition.CATEGORY }}</span>
+        </a>
       </div>
     </div>
   </div>

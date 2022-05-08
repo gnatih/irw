@@ -41,6 +41,7 @@ const methods = {
         exhibition_data[key].image = {
           thumb: `https://irememberwater.watermuseums.net/images/thumbs/${name}`,
           large: `https://irememberwater.watermuseums.net/images/large/${name}`,
+          micro: `https://irememberwater.watermuseums.net/images/micro/${name}`,
         };
       }
 

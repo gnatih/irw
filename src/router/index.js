@@ -4,6 +4,7 @@ import AboutPage from "../views/AboutPage";
 import StoryPage from "../views/StoryPage";
 import CategoryPage from "../views/CategoryPage";
 import ExhibitionPage from "../views/ExhibitionPage";
+import ExhibitionDetailPage from "../views/ExhibitionDetailPage";
 
 const routes = [
   {
@@ -15,6 +16,11 @@ const routes = [
     path: "/exhibition",
     name: "exhibition",
     component: ExhibitionPage,
+  },
+  {
+    path: "/exhibition/:id",
+    name: "exhibition-detail",
+    component: ExhibitionDetailPage,
   },
   {
     path: "/category/:slug",
