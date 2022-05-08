@@ -30,8 +30,8 @@ const methods = {
       for (const key in stories_data) {
         const name = stories_data[key]["UNIVOCALCODE"];
         stories_data[key].image = {
-          thumb: `https://irememberwater.watermuseums.net/images/thumbs/${name}`,
-          large: `https://irememberwater.watermuseums.net/images/large/${name}`,
+          thumb: `/images/thumbs/${name}`,
+          large: `/images/large/${name}`,
         };
       }
 
