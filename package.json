@@ -48,7 +48,17 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {}
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "printWidth": 800
+        }
+      ],
+      "max-len": "off",
+      "vue/no-v-html": "off",
+      "vue/max-attributes-per-line": "off"
+    }
   },
   "browserslist": [
     "> 1%",

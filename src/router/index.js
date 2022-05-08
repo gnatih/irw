@@ -3,12 +3,18 @@ import HomePage from "../views/HomePage.vue";
 import AboutPage from "../views/AboutPage";
 import StoryPage from "../views/StoryPage";
 import CategoryPage from "../views/CategoryPage";
+import ExhibitionPage from "../views/ExhibitionPage";
 
 const routes = [
   {
     path: "/",
     name: "home",
     component: HomePage,
+  },
+  {
+    path: "/exhibition",
+    name: "exhibition",
+    component: ExhibitionPage,
   },
   {
     path: "/category/:slug",

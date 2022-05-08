@@ -1,3 +1,7 @@
+:root {
+  --bs-light-rgb: 228, 228, 228;
+}
+
 @each $num_columns, $apply in $responsive_text_columns {
   .text-columns-#{$num_columns} {
     -webkit-column-count: 1;
@@ -36,7 +40,6 @@
 
 .page-title {
   color: #3b6fd8;
-  text-transform: uppercase;
   font-size: 32px;
 }
 

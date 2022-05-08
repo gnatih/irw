@@ -4,7 +4,7 @@ dist/images/large
 dist/images/thumbs
 public/images/large
 public/images/thumbs
-
+dist/
 
 # local env files
 .env.local

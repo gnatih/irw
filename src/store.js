@@ -2,7 +2,7 @@ import { reactive } from "vue";
 import first from "lodash/first";
 import map from "lodash/map";
 import sortBy from "lodash/sortBy";
-import { chain } from "lodash";
+import { groupBy } from "lodash";
 
 const state = reactive({
   data: [],
@@ -23,17 +23,9 @@ const methods = {
       console.log("..fetch data");
       console.log(`${service}/${sheetId}/Entries`);
 
-      const stories_data = await fetch(`${service}/${sheetId}/Entries`).then(
-        (r) => r.json()
-      );
-
-      const exhibition_data = await fetch(
-        `${service}/${sheetId}/Exhibition`
-      ).then((r) => r.json());
-
-      const categories = await fetch(`${service}/${sheetId}/Categories`).then(
-        (r) => r.json()
-      );
+      const stories_data = await fetch(`${service}/${sheetId}/Entries`).then((r) => r.json());
+      const exhibition_data = await fetch(`${service}/${sheetId}/Exhibition`).then((r) => r.json());
+      const categories = await fetch(`${service}/${sheetId}/Categories`).then((r) => r.json());
 
       for (const key in stories_data) {
         const name = stories_data[key]["UNIVOCALCODE"];
@@ -43,10 +35,7 @@ const methods = {
         };
       }
 
-      const stories_groups = chain(stories_data)
-        .groupBy((item) => `${item.STORY}--${item.MUSEUMNAME}`)
-        .value();
-
+      const stories_groups = groupBy(stories_data, "STORYID");
       const stories = map(stories_groups, (story) => first(story));
 
       state.data = stories_data;
