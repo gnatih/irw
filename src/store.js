@@ -9,6 +9,7 @@ const state = reactive({
   stories: [],
   categories: [],
   category: null,
+  exhibition: [],
 });
 
 const methods = {
@@ -21,7 +22,6 @@ const methods = {
 
     if (!storage || reload) {
       console.log("..fetch data");
-      console.log(`${service}/${sheetId}/Entries`);
 
       const stories_data = await fetch(`${service}/${sheetId}/Entries`).then((r) => r.json());
       const exhibition_data = await fetch(`${service}/${sheetId}/Exhibition`).then((r) => r.json());
@@ -51,6 +51,7 @@ const methods = {
       state.data = stories_data;
       state.stories = stories;
       state.categories = sortBy(categories, "Priority");
+      state.exhibition = exhibition_data;
 
       localStorage.setItem(
         "irw-storage",
