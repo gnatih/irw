@@ -6,8 +6,8 @@
   <div class="break-top mb-5"><img src="/images/break-bottom.svg" /></div>
 
   <div class="container exhibitions-swiper-wrapper">
-    <div class="swiper-button-prev" @click="prevStory"></div>
-    <div class="swiper-button-next" @click="nextStory"></div>
+    <div class="swiper-button-prev" @click="prevExhibit"></div>
+    <div class="swiper-button-next" @click="nextExhibit"></div>
     <swiper id="exhibitions-swiper" :slides-per-view="'auto'" :centered-slides="true" :space-between="15" class="mb-5" @swiper="swiperInit" @slide-change="swiperChange">
       <swiper-slide v-for="exhibit in exhibitions" :key="exhibit.UUID"
         ><a :href="'/exhibition/' + exhibit.UUID"><img :src="`https://irememberwater.watermuseums.net/images/micro/${exhibit.UNIVOCALCODE}`" /></a
@@ -56,12 +56,30 @@ export default {
       swiper.activeIndex = initialSlide.value;
     };
 
+    const nextExhibit = () => {
+      let next = exhibitions.value[initialSlide.value + 1];
+
+      if (next) {
+        window.location.href = "/exhibition/" + next.UUID;
+      }
+    };
+
+    const prevExhibit = () => {
+      let prev = exhibitions.value[initialSlide.value - 1];
+
+      if (prev) {
+        window.location.href = "/exhibition/" + prev.UUID;
+      }
+    };
+
     return {
       exhibitions,
       exhibition,
       swiperInit,
       swiperChange,
       initialSlide,
+      nextExhibit,
+      prevExhibit,
     };
   },
 };
