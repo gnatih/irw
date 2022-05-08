@@ -7,11 +7,11 @@
   <div class="container stories-swiper-wrapper">
     <div class="swiper-button-prev" @click="prevStory"></div>
     <div class="swiper-button-next" @click="nextStory"></div>
-    <!-- <swiper id="stories-swiper" :slides-per-view="'auto'" :centered-slides="true" :space-between="15" class="mb-5" @swiper="swiperInit" @slide-change="changeStorySwiper">
+    <swiper id="stories-swiper" :slides-per-view="'auto'" :centered-slides="true" :space-between="15" class="mb-5" @swiper="swiperInit" @slide-change="changeStorySwiper">
       <swiper-slide v-for="story in all_stories" :key="story.STORYID"
-        ><a :href="'/story/' + story.STORYID"><img :src="story.image.thumb" /></a
-      ></swiper-slide> 
-    </swiper>-->
+        ><a :href="'/story/' + story.STORYID"><img :src="story.image.micro" /></a
+      ></swiper-slide>
+    </swiper>
   </div>
 
   <div class="col-md-8 mx-auto mb-5">

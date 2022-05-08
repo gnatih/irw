@@ -1,0 +1,10 @@
+.exhibition-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.exhibition-tile {
+  padding: 60px;
+  align-self: center;
+  justify-self: center;
+  
+}
