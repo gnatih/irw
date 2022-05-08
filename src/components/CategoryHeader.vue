@@ -3,7 +3,7 @@
     <div class="ratio ratio-1x1 float-end" style="width: 100px">
       <img :src="`/images/icon_${category.toLowerCase()}.svg`" alt="" />
     </div>
-    <h2 class="page-title me-auto">{{ category }}</h2>
+    <h2 class="page-title ms-2 me-auto">{{ category }}</h2>
 
     <img :src="`/images/il_${category.toLowerCase()}.svg`" width="200" :alt="category" class="ms-auto" />
   </div>

@@ -32,6 +32,15 @@ const methods = {
         stories_data[key].image = {
           thumb: `/images/thumbs/${name}`,
           large: `/images/large/${name}`,
+          micro: `https://irememberwater.watermuseums.net/images/micro/${name}`,
+        };
+      }
+
+      for (const key in exhibition_data) {
+        const name = exhibition_data[key]["UNIVOCALCODE"];
+        exhibition_data[key].image = {
+          thumb: `/images/thumbs/${name}`,
+          large: `/images/large/${name}`,
         };
       }
 
