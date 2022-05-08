@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <img src="/images/fp-sequence1.jpg" alt="I Remember Water.." class="img-fluid" />
+        <img :src="`/images/fp-sequence${fpIndex}.jpg`" alt="I Remember Water.." class="img-fluid" />
       </div>
     </div>
   </div>
@@ -82,9 +82,11 @@ export default {
   setup() {
     const store = inject("store");
     let categories = computed(() => store.state.categories);
+    let fpIndex = Math.floor(Math.random() * 5) + 1;
 
     return {
       categories,
+      fpIndex,
     };
   },
 };
