@@ -60,10 +60,9 @@ export default {
     }));
 
     let filtered_stories = computed(() => {
-      console.log(store.state.stories);
-      return store.state.stories.filter((story) => {
-        console.log(story);
-      });
+      return store.state.stories.filter(
+        (story) => story[category.value] == "1"
+      );
     });
 
     return { category, store, filtered_stories, classObject };
