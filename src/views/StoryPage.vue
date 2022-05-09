@@ -7,9 +7,9 @@
   <div class="container stories-swiper-wrapper">
     <div class="swiper-button-prev" @click="prevStory"></div>
     <div class="swiper-button-next" @click="nextStory"></div>
-    <swiper id="stories-swiper" :slides-per-view="'auto'" :centered-slides="true" :space-between="15" class="mb-5" @swiper="swiperInit" @slide-change="changeStorySwiper">
+    <swiper id="stories-swiper" :load-prev-next="true" :load-prev-next-amount="10" :initial-slide="initialSlide" :preload-images="true" :slides-per-view="'auto'" :centered-slides="true" :space-between="15" class="mb-5" @swiper="swiperInit" @slide-change="changeStorySwiper">
       <swiper-slide v-for="story in all_stories" :key="story.STORYID"
-        ><a :href="'/story/' + story.STORYID"><img :src="story.image.micro" /></a
+        ><a :href="'/story/' + story.STORYID"><img :src="story.image.micro" class="swiper-lazy" /> </a
       ></swiper-slide>
     </swiper>
   </div>
@@ -93,6 +93,8 @@ export default {
       if (initialSlide) {
         swiper.activeIndex = initialSlide.value;
         swiper.preventInteractionOnTransition = true;
+        swiper.loadPrevNext = true;
+        swiper.loadPrevNextAmount = 10;
       }
     };
 
