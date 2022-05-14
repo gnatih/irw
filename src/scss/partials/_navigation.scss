@@ -7,6 +7,17 @@ header .nav-link {
   margin: 0 8px;
 }
 
+@include media-breakpoint-down(sm) {
+  .navbar-brand {
+    width: 150px;
+    margin-left: -1em;
+  }
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
 .router-link-active {
   border-bottom: 4px solid $gray-600;
 }

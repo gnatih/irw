@@ -5,7 +5,7 @@
     </div>
     <h2 class="page-title ms-2 me-auto">{{ category }}</h2>
 
-    <img :src="`/images/il_${category.toLowerCase()}.svg`" width="200" :alt="category" class="ms-auto" />
+    <img :src="`/images/il_${category.toLowerCase()}.svg`" width="200" :alt="category" class="d-none d-md-block ms-auto" />
   </div>
 </template>
 

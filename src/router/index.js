@@ -50,4 +50,9 @@ const router = createRouter({
   routes,
 });
 
+router.afterEach(() => {
+  const collapsible = document.getElementById("navbarSupportedContent");
+  collapsible.classList.remove("show");
+});
+
 export default router;

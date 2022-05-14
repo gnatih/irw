@@ -28,13 +28,13 @@
 
     img {
       object-fit: contain;
-      max-width:100%;
+      max-width: 100%;
       max-height: 100%;
     }
 
     &-active {
       padding: 5px;
-      border:2px solid $primary;
+      border: 2px solid $primary;
     }
   }
 }
@@ -72,17 +72,23 @@
   }
 }
 
+.swiper-button-prev,
+.swiper-button-next {
+  top: 55px;
+}
+
 @include media-breakpoint-down(sm) {
-  .swiper-button-next, .swiper-button-prev {
+  .swiper-button-next,
+  .swiper-button-prev {
     --swiper-navigation-size: 20px;
-    top: 28px;
+    top: 25px;
   }
 
   .swiper-button-next {
-    right: .5em!important;
+    right: 1em !important;
   }
 
   .swiper-button-prev {
-    left: .5em!important;
+    left: 1em !important;
   }
 }

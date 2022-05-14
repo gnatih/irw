@@ -1,6 +1,10 @@
 .exhibition-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+
+  @include media-breakpoint-down(sm) {
+    grid-template-columns: auto;
+  }
 }
 
 .exhibition-tile {
@@ -12,6 +16,10 @@
     text-decoration: none;
     color: $body-color;
   }
+
+  @include media-breakpoint-down(sm) {
+    padding: 30px;
+  }
 }
 
 #exhibitions-swiper {
@@ -22,13 +30,13 @@
     user-select: none;
     img {
       object-fit: contain;
-      max-width:100%;
+      max-width: 100%;
       max-height: 100%;
     }
 
     &-active {
       padding: 5px;
-      border:2px solid $primary;
+      border: 2px solid $primary;
     }
   }
 }

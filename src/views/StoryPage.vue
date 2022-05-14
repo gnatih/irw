@@ -4,37 +4,37 @@
       <div class="col stories-swiper-wrapper">
         <div class="swiper-button-prev" @click="prevStory"></div>
         <div class="swiper-button-next" @click="nextStory"></div>
-        <swiper id="stories-swiper" :load-prev-next="true" :load-prev-next-amount="10" :initial-slide="initialSlide" :preload-images="true" :slides-per-view="'auto'" :centered-slides="true" :space-between="15" class="d-none d-md-block" @swiper="swiperInit" @slide-change="changeStorySwiper">
+        <swiper id="stories-swiper" :initial-slide="initialSlide" :slides-per-view="'auto'" :centered-slides="true" :space-between="15" class="d-none d-md-block" @swiper="swiperInit" @slide-change="changeStorySwiper">
           <swiper-slide v-for="story in all_stories" :key="story.STORYID"
             ><a :href="'/story/' + story.STORYID"><img :src="story.image.micro" /> </a
           ></swiper-slide>
         </swiper>
       </div>
     </div>
-    <div class="row my-md-5">
+    <div class="row my-3 my-md-5">
       <div class="col-md-8 mx-auto">
-        <h2 class="text-center my-3 mx-3 mx-md-auto">{{ stories[slide].TITLE }}</h2>
+        <h2 class="text-center mb-5 mx-3 mt-0 mt-md-5 mx-md-auto">{{ stories[slide].TITLE }}</h2>
 
         <div v-if="stories.length > 1">
-          <swiper id="story-swiper" :modules="[Navigation, Thumbs]" :pagination="{ clickable: true }" :thumbs="{ swiper: thumbsSwiper }" @slide-change="slideChange">
+          <swiper id="story-swiper" :auto-height="true" :modules="[Navigation, Thumbs]" :pagination="{ clickable: true }" :thumbs="{ swiper: thumbsSwiper }" @slide-change="slideChange">
             <template v-for="story in stories" :key="story.ID">
               <swiper-slide v-show="story.image" class="story-slide" :data-story-id="story.STORYID" :style="{ background: `url(${story.image.large})` }"></swiper-slide>
             </template>
           </swiper>
           <swiper :modules="[Thumbs]" watch-slides-progress class="mt-3 thumbs-swiper" slides-per-view="5" :center-slides="true" :center-insufficient-slides="true" :space-between="15" @swiper="setThumbsSwiper">
             <template v-for="story in stories" :key="story.ID">
-              <swiper-slide v-show="story.image" :style="{ 'background-image': `url(${story.image.thumb})` }"> </swiper-slide>
+              <swiper-slide v-show="story.image"><img :src="story.image.micro" alt="" /></swiper-slide>
             </template>
           </swiper>
         </div>
-        <div v-else class="story-slide" :style="{ background: `url(${stories[slide].image.large})` }"></div>
+        <div v-else class="story-slide"><img :src="stories[slide].image.large" :alt="stories[slide].TITLE" class="img-fluid" /></div>
 
         <div class="story-info mt-5 text-center">
           <div class="story-description">{{ stories[slide].DESCRIPTION }}</div>
-          <div v-if="stories[slide].AUTHORS" class="text-center my-3"><i class="fa-solid fa-user me-2"></i>{{ stories[slide].AUTHORS }}</div>
-
-          <div class="mt-4">
-            <span class="me-2"><i class="fa-solid fa-location-dot me-2"></i>{{ stories[slide].COUNTRY }}</span> <i class="fa-solid fa-landmark me-2"></i>{{ stories[slide].MUSEUMNAME }}
+          <div v-if="stories[slide].AUTHORS" class="text-center mt-3">
+            <span class="d-block mb-2"><i class="fa-solid fa-user me-2"></i>{{ stories[slide].AUTHORS }}</span>
+            <span class="me-2"><i class="fa-solid fa-location-dot me-2"></i>{{ stories[slide].COUNTRY }}</span>
+            <span class="d-block d-md-inline-block mt-2 mt-md-0"><i class="fa-solid fa-landmark me-2"></i>{{ stories[slide].MUSEUMNAME }}</span>
           </div>
         </div>
       </div>

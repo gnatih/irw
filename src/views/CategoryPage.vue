@@ -5,7 +5,7 @@
     </div>
   </div>
 
-  <div class="break--top mb-5">
+  <div class="break--top mb-3 mb-md-5">
     <img src="/images/break-bottom.svg" alt="break-top" />
   </div>
 
@@ -16,11 +16,11 @@
   </div>
 
   <div class="container main">
-    <div v-masonry transition-duration="0.5s" item-selector=".col" :class="classObject" class="row gx-5 gy-3 mb-5 masonry mx-5">
+    <div v-masonry transition-duration="0.5s" item-selector=".col" class="row row-cols-2 row-cols-md-3 gx-4 mb-5 masonry">
       <template v-for="story in filtered_stories" :key="story.ID">
         <router-link v-if="story.image" v-masonry-tile class="col mb-3" :to="`/story/${story.STORYID}`">
           <img :src="story.image.thumb" alt="" class="img-fluid w-100 shadow border" />
-          <h5 class="mt-3 mb-0">{{ story.TITLE }}</h5>
+          <h5 class="mt-3 mb-0 fs-5 fs-md-auto">{{ story.TITLE }}</h5>
           <div>
             {{ story.COUNTRY }}
           </div>
@@ -42,10 +42,6 @@ export default {
     const store = inject("store");
     const route = useRoute();
     const category = computed(() => route.params.slug);
-    const classObject = computed(() => ({
-      "exhibit row-cols-2": category.value == "Exhibition",
-      "row-cols-3": category.value !== "Exhibition",
-    }));
 
     let filtered_stories = computed(() => {
       return store.state.stories.filter((story) => story[category.value] == "1");
@@ -53,7 +49,7 @@ export default {
 
     let category_meta = computed(() => first(store.state.categories.filter((item) => item.Category == category.value)));
 
-    return { category, category_meta, store, filtered_stories, classObject };
+    return { category, category_meta, store, filtered_stories };
   },
 };
 </script>

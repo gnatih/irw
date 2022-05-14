@@ -20,10 +20,14 @@
 
     <div class="row my-3 my-md-5">
       <div class="col-md-8 mx-auto">
-        <div class="story-slide" :style="{ background: `url(${exhibition.image.large})` }"></div>
+        <div class="story-slide"><img :src="exhibition.image.large" class="img-fluid" /></div>
         <div class="story-info mt-5 text-center">
           <div class="story-description">{{ exhibition.DESCRIPTION }}</div>
-          <div class="mt-4"><img src="/images/location.png" width="18" alt="location" class="me-2" />{{ exhibition.COUNTRY }} <img src="/images/museum.png" width="18" alt="location" class="ms-4 me-2" />{{ exhibition.MUSEUMNAME }}</div>
+          <div class="mt-4">
+            <span class="d-block mb-2" v-if="exhibition.AUTHORS"><i class="fa-solid fa-user me-2"></i>{{ exhibition.AUTHORS }}</span>
+            <span class="me-2"><i class="fa-solid fa-location-dot me-2"></i>{{ exhibition.COUNTRY }}</span>
+            <span class="d-block d-md-inline-block mt-2 mt-md-0"><i class="fa-solid fa-landmark me-2"></i>{{ exhibition.MUSEUMNAME }}</span>
+          </div>
         </div>
       </div>
     </div>

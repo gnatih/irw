@@ -9,3 +9,13 @@ footer {
     }
   }
 }
+
+@include media-breakpoint-down(sm) {
+  [data-org="wamunet"] img {
+    width: 180px;
+  }
+
+  [data-org="lwm"] img {
+    width: 120px;
+  }
+}
