@@ -1,5 +1,9 @@
 .DS_Store
 node_modules
+images/thumbs
+images/large
+images/micro
+dist/
 
 # local env files
 .env.local
