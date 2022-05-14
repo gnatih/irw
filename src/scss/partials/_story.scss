@@ -1,8 +1,8 @@
 .story-slide {
-  min-height: 580px;
   background-repeat: no-repeat !important;
   background-position: center !important;
   background-size: contain !important;
+  height: auto;
 }
 
 .story-info {
@@ -10,6 +10,7 @@
     vertical-align: top;
     padding: 6px;
   }
+
   td:first-child {
     color: $primary;
     text-align: right;
@@ -24,6 +25,7 @@
   .swiper-slide {
     width: auto;
     user-select: none;
+
     img {
       object-fit: contain;
       max-width:100%;
@@ -60,11 +62,27 @@
 
 .stories-swiper-wrapper {
   position: relative;
+
   .swiper-button-prev {
     left: -32px;
   }
 
   .swiper-button-next {
     right: -32px;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .swiper-button-next, .swiper-button-prev {
+    --swiper-navigation-size: 20px;
+    top: 28px;
+  }
+
+  .swiper-button-next {
+    right: .5em!important;
+  }
+
+  .swiper-button-prev {
+    left: .5em!important;
   }
 }

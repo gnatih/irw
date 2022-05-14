@@ -1,5 +1,5 @@
 <template>
-  <h2 class="text-center mb-5">About WAMU-NET</h2>
+  <h2 class="text-center mb-5">About the Global Network of Water Museums</h2>
 
   <div class="container">
     <div class="row">

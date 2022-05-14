@@ -8,7 +8,7 @@
       <div id="navbarSupportedContent" class="collapse navbar-collapse">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <router-link class="nav-link" to="/about">About</router-link>
+            <router-link class="nav-link text-secondary" to="/about">About</router-link>
           </li>
 
           <li class="nav-item">
@@ -19,7 +19,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="https://google.com" class="nav-link" target="_blank">Contact</a>
+            <a href="https://www.watermuseums.net/contacts/" class="nav-link text-secondary" target="_blank">Contact</a>
           </li>
         </ul>
       </div>

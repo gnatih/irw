@@ -18,13 +18,12 @@
   <div class="container main">
     <div v-masonry transition-duration="0.5s" item-selector=".col" :class="classObject" class="row gx-5 gy-3 mb-5 masonry mx-5">
       <template v-for="story in filtered_stories" :key="story.ID">
-        <router-link v-if="story.image" v-masonry-tile class="col" :to="`/story/${story.STORYID}`">
+        <router-link v-if="story.image" v-masonry-tile class="col mb-3" :to="`/story/${story.STORYID}`">
           <img :src="story.image.thumb" alt="" class="img-fluid w-100 shadow border" />
-          <h5 class="mt-3">{{ story.TITLE }}</h5>
-          <p>
-            {{ story.AUTHORS }} <span v-if="story.AUTHORS">,</span>
-            {{ story.COUNTRY.charAt(0).toUpperCase() + story.COUNTRY.toLowerCase().slice(1) }}
-          </p>
+          <h5 class="mt-3 mb-0">{{ story.TITLE }}</h5>
+          <div>
+            {{ story.COUNTRY }}
+          </div>
         </router-link>
       </template>
     </div>

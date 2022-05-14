@@ -6,3 +6,7 @@ header .nav-link {
   padding-top: 32px;
   margin: 0 8px;
 }
+
+.router-link-active {
+  border-bottom: 4px solid $gray-600;
+}

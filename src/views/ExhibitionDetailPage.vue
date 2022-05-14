@@ -1,29 +1,31 @@
 <template>
-  <div class="container">
-    <category-header :category="'Exhibition'"></category-header>
-  </div>
-
-  <div class="break-top mb-5"><img src="/images/break-bottom.svg" /></div>
-
   <div class="container exhibitions-swiper-wrapper">
-    <div class="swiper-button-prev" @click="prevExhibit"></div>
-    <div class="swiper-button-next" @click="nextExhibit"></div>
-    <swiper id="exhibitions-swiper" :slides-per-view="'auto'" :initial-slide="initialSlide" :centered-slides="true" :space-between="15" class="mb-5" @swiper="swiperInit" @slide-change="swiperChange">
-      <swiper-slide v-for="exhibit in exhibitions" :key="exhibit.UUID"
-        ><a :href="'/exhibition/' + exhibit.UUID"><img :src="`https://irememberwater.watermuseums.net/images/micro/${exhibit.UNIVOCALCODE}`" /></a
-      ></swiper-slide>
-    </swiper>
-  </div>
+    <div class="row">
+      <div class="col">
+        <div class="swiper-button-prev" @click="prevExhibit"></div>
+        <div class="swiper-button-next" @click="nextExhibit"></div>
+        <swiper id="exhibitions-swiper" :slides-per-view="'auto'" :auto-height="true" :initial-slide="initialSlide" :centered-slides="true" :space-between="15" class="mb-5 d-none d-md-block" @swiper="swiperInit" @slide-change="swiperChange">
+          <swiper-slide v-for="exhibit in exhibitions" :key="exhibit.UUID"
+            ><a :href="'/exhibition/' + exhibit.UUID"><img :src="`https://irememberwater.watermuseums.net/images/micro/${exhibit.UNIVOCALCODE}`" /></a
+          ></swiper-slide>
+        </swiper>
+      </div>
+    </div>
 
-  <div class="col-md-8 mx-auto mb-5">
-    <h2 class="text-center my-3">{{ exhibition.TITLE }}</h2>
-    <div v-if="exhibition.AUTHORS" class="text-center my-3">{{ exhibition.AUTHORS }}</div>
+    <div class="row">
+      <div class="col">
+        <h2 class="mx-3 mx-md-auto text-center my-0">{{ exhibition.TITLE }}</h2>
+      </div>
+    </div>
 
-    <div class="story-slide" :style="{ background: `url(${exhibition.image.large})` }"></div>
-
-    <div class="story-info mt-5 text-center">
-      <div class="story-description">{{ exhibition.DESCRIPTION }}</div>
-      <div class="mt-5"><img src="/images/location.png" width="18" alt="location" class="me-2" />{{ exhibition.COUNTRY }} <img src="/images/museum.png" width="18" alt="location" class="ms-4 me-2" />{{ exhibition.MUSEUMNAME }}</div>
+    <div class="row my-3 my-md-5">
+      <div class="col-md-8 mx-auto">
+        <div class="story-slide" :style="{ background: `url(${exhibition.image.large})` }"></div>
+        <div class="story-info mt-5 text-center">
+          <div class="story-description">{{ exhibition.DESCRIPTION }}</div>
+          <div class="mt-4"><img src="/images/location.png" width="18" alt="location" class="me-2" />{{ exhibition.COUNTRY }} <img src="/images/museum.png" width="18" alt="location" class="ms-4 me-2" />{{ exhibition.MUSEUMNAME }}</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -31,7 +33,6 @@
 <script>
 import { computed, inject } from "@vue/runtime-core";
 import { useRoute } from "vue-router";
-import CategoryHeader from "@/components/CategoryHeader.vue";
 import first from "lodash/first";
 import findIndex from "lodash/findIndex";
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -39,7 +40,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 
 export default {
-  components: { Swiper, SwiperSlide, CategoryHeader },
+  components: { Swiper, SwiperSlide },
   setup() {
     const store = inject("store");
     const route = useRoute();
@@ -54,6 +55,8 @@ export default {
 
     const swiperInit = (swiper) => {
       swiper.activeIndex = initialSlide.value;
+      console.log(swiper);
+      swiper.autoHeight = true;
     };
 
     const nextExhibit = () => {

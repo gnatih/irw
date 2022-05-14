@@ -1,40 +1,43 @@
 <template>
   <div class="container">
-    <category-header :category="category"></category-header>
-  </div>
-
-  <div class="break-top mb-5"><img src="/images/break-bottom.svg" /></div>
-  <div class="container stories-swiper-wrapper">
-    <div class="swiper-button-prev" @click="prevStory"></div>
-    <div class="swiper-button-next" @click="nextStory"></div>
-    <swiper id="stories-swiper" :load-prev-next="true" :load-prev-next-amount="10" :initial-slide="initialSlide" :preload-images="true" :slides-per-view="'auto'" :centered-slides="true" :space-between="15" class="mb-5" @swiper="swiperInit" @slide-change="changeStorySwiper">
-      <swiper-slide v-for="story in all_stories" :key="story.STORYID"
-        ><a :href="'/story/' + story.STORYID"><img :src="story.image.micro" class="swiper-lazy" /> </a
-      ></swiper-slide>
-    </swiper>
-  </div>
-
-  <div class="col-md-8 mx-auto mb-5">
-    <h2 class="text-center my-3">{{ stories[slide].TITLE }}</h2>
-    <div v-if="stories[slide].AUTHORS" class="text-center my-3">{{ stories[slide].AUTHORS }}</div>
-
-    <div v-if="stories.length > 1">
-      <swiper id="story-swiper" :modules="[Navigation, Thumbs]" :pagination="{ clickable: true }" :thumbs="{ swiper: thumbsSwiper }" @slide-change="slideChange">
-        <template v-for="story in stories" :key="story.ID">
-          <swiper-slide v-show="story.image" class="story-slide" :data-story-id="story.STORYID" :style="{ background: `url(${story.image.large})` }"></swiper-slide>
-        </template>
-      </swiper>
-      <swiper :modules="[Thumbs]" watch-slides-progress class="mt-3 thumbs-swiper" slides-per-view="5" :center-slides="true" :center-insufficient-slides="true" :space-between="15" @swiper="setThumbsSwiper">
-        <template v-for="story in stories" :key="story.ID">
-          <swiper-slide v-show="story.image" :style="{ 'background-image': `url(${story.image.thumb})` }"> </swiper-slide>
-        </template>
-      </swiper>
+    <div class="row">
+      <div class="col stories-swiper-wrapper">
+        <div class="swiper-button-prev" @click="prevStory"></div>
+        <div class="swiper-button-next" @click="nextStory"></div>
+        <swiper id="stories-swiper" :load-prev-next="true" :load-prev-next-amount="10" :initial-slide="initialSlide" :preload-images="true" :slides-per-view="'auto'" :centered-slides="true" :space-between="15" class="d-none d-md-block" @swiper="swiperInit" @slide-change="changeStorySwiper">
+          <swiper-slide v-for="story in all_stories" :key="story.STORYID"
+            ><a :href="'/story/' + story.STORYID"><img :src="story.image.micro" /> </a
+          ></swiper-slide>
+        </swiper>
+      </div>
     </div>
-    <div v-else class="story-slide" :style="{ background: `url(${stories[slide].image.large})` }"></div>
+    <div class="row my-md-5">
+      <div class="col-md-8 mx-auto">
+        <h2 class="text-center my-3 mx-3 mx-md-auto">{{ stories[slide].TITLE }}</h2>
 
-    <div class="story-info mt-5 text-center">
-      <div class="story-description">{{ stories[slide].DESCRIPTION }}</div>
-      <div class="mt-5"><img src="/images/location.png" width="18" alt="location" class="me-2" />{{ stories[slide].COUNTRY }} <img src="/images/museum.png" width="18" alt="location" class="ms-4 me-2" />{{ stories[slide].MUSEUMNAME }}</div>
+        <div v-if="stories.length > 1">
+          <swiper id="story-swiper" :modules="[Navigation, Thumbs]" :pagination="{ clickable: true }" :thumbs="{ swiper: thumbsSwiper }" @slide-change="slideChange">
+            <template v-for="story in stories" :key="story.ID">
+              <swiper-slide v-show="story.image" class="story-slide" :data-story-id="story.STORYID" :style="{ background: `url(${story.image.large})` }"></swiper-slide>
+            </template>
+          </swiper>
+          <swiper :modules="[Thumbs]" watch-slides-progress class="mt-3 thumbs-swiper" slides-per-view="5" :center-slides="true" :center-insufficient-slides="true" :space-between="15" @swiper="setThumbsSwiper">
+            <template v-for="story in stories" :key="story.ID">
+              <swiper-slide v-show="story.image" :style="{ 'background-image': `url(${story.image.thumb})` }"> </swiper-slide>
+            </template>
+          </swiper>
+        </div>
+        <div v-else class="story-slide" :style="{ background: `url(${stories[slide].image.large})` }"></div>
+
+        <div class="story-info mt-5 text-center">
+          <div class="story-description">{{ stories[slide].DESCRIPTION }}</div>
+          <div v-if="stories[slide].AUTHORS" class="text-center my-3"><i class="fa-solid fa-user me-2"></i>{{ stories[slide].AUTHORS }}</div>
+
+          <div class="mt-4">
+            <span class="me-2"><i class="fa-solid fa-location-dot me-2"></i>{{ stories[slide].COUNTRY }}</span> <i class="fa-solid fa-landmark me-2"></i>{{ stories[slide].MUSEUMNAME }}
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -45,7 +48,6 @@ import { useRoute } from "vue-router";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Thumbs, Lazy, FreeMode } from "swiper";
 import findIndex from "lodash/findIndex";
-import CategoryHeader from "@/components/CategoryHeader.vue";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -53,7 +55,7 @@ import "swiper/css/lazy";
 import "swiper/css/free-mode";
 
 export default {
-  components: { Swiper, SwiperSlide, CategoryHeader },
+  components: { Swiper, SwiperSlide },
   beforeRouteEnter(to, from, next) {
     next((vm) => {
       vm.store.state.category = from.params.slug;
