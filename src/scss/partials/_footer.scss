@@ -10,7 +10,7 @@ footer {
   }
 }
 
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-down(md) {
   [data-org="wamunet"] img {
     width: 180px;
   }

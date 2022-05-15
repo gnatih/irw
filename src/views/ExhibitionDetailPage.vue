@@ -5,7 +5,7 @@
         <div class="swiper-button-prev" @click="prevExhibit"></div>
         <div class="swiper-button-next" @click="nextExhibit"></div>
         <swiper id="exhibitions-swiper" :slides-per-view="'auto'" :auto-height="true" :initial-slide="initialSlide" :centered-slides="true" :space-between="15" class="mb-5 d-none d-md-block" @swiper="swiperInit" @slide-change="swiperChange">
-          <swiper-slide v-for="exhibit in exhibitions" :key="exhibit.UUID"
+          <swiper-slide v-for="exhibit in exhibitions" :key="exhibit.UUID" class="text-center"
             ><a :href="'/exhibition/' + exhibit.UUID"><img :src="`https://irememberwater.watermuseums.net/images/micro/${exhibit.UNIVOCALCODE}`" /></a
           ></swiper-slide>
         </swiper>
@@ -20,7 +20,7 @@
 
     <div class="row my-3 my-md-5">
       <div class="col-md-8 mx-auto">
-        <div class="story-slide"><img :src="exhibition.image.large" class="img-fluid" /></div>
+        <div class="story-slide text-center"><img :src="exhibition.image.large" class="img-fluid" /></div>
         <div class="story-info mt-5 text-center">
           <div class="story-description">{{ exhibition.DESCRIPTION }}</div>
           <div class="mt-4">

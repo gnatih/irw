@@ -42,7 +42,7 @@
         <div class="bg-light p-4 d-flex align-items-center flex-column flex-md-row">
           <p>In this section, the curatorial team has selected the most representative images from 60 participating institutions and 6 artists from around the world to create an exhibition 'in hand' - <b>a taster of the different 'water worlds' exhibited by museums</b> affiliated to WAMU-NET. This selection is now available to all partners to illustrate <b>the diversity and similarity of humankind's connections with water and its heritage</b>. Images have been selected through a democratic process which involved all curators in intensive discussions to ensure that all pictures conveyed universal water memories.</p>
           <div class="mx-4">
-            <a href="/exhibition" class="d-inline-block btn btn-secondary my-3 text-uppercase">VIEW<i class="ms-2 fa fa-angle-right"></i></a>
+            <a href="/exhibition" class="d-inline-block btn btn-secondary my-3 text-uppercase text-nowrap">VIEW<i class="ms-2 fa fa-angle-right"></i></a>
           </div>
         </div>
       </div>
@@ -57,10 +57,10 @@
 
     <div class="row">
       <div class="category-tabs col py-3">
-        <ul id="category-tabs" class="nav nav-tabs nav-fill" role="tablist">
+        <ul id="category-tabs" class="nav nav-tabs nav-fill flex-wrap flex-md-nowrap" role="tablist">
           <li v-for="(category, index) in categories" :key="category.Priority" class="nav-item" role="presentation">
             <button :class="{ 'nav-link': true, active: index == 0 }" data-bs-toggle="tab" :data-bs-target="`#${category.Category}-tab`" type="button" role="tab" aria-controls="#" aria-selected="true">
-              <img :src="`/images/icon_${category.Category.toLowerCase()}.svg`" :alt="category.Category" />
+              <img :src="`/images/icon_${category.Category.toLowerCase()}.svg`" :alt="category.Category" class="img-fluid" />
               <div>{{ category.Category }}</div>
             </button>
           </li>
@@ -70,7 +70,7 @@
             <div class="d-flex flex-column flex-md-row">
               <div>{{ category.short_text }}</div>
               <div class="mx-4 align-self-center">
-                <a :href="`/category/${category.Category}`" class="d-inline-block btn btn-secondary my-3 text-uppercase">VIEW<i class="ms-2 fa fa-angle-right"></i></a>
+                <a :href="`/category/${category.Category}`" class="text-nowrap d-inline-block btn btn-secondary my-3 text-uppercase">VIEW<i class="ms-2 fa fa-angle-right"></i></a>
               </div>
             </div>
           </div>

@@ -18,21 +18,21 @@
         <div v-if="stories.length > 1">
           <swiper id="story-swiper" :auto-height="true" :modules="[Navigation, Thumbs]" :pagination="{ clickable: true }" :thumbs="{ swiper: thumbsSwiper }" @slide-change="slideChange">
             <template v-for="story in stories" :key="story.ID">
-              <swiper-slide v-show="story.image" class="story-slide" :data-story-id="story.STORYID" :style="{ background: `url(${story.image.large})` }"></swiper-slide>
+              <swiper-slide v-show="story.image" class="story-slide text-center" :data-story-id="story.STORYID"><img :src="story.image.large" :alt="story.TITLE" class="img-fluid" /></swiper-slide>
             </template>
           </swiper>
-          <swiper :modules="[Thumbs]" watch-slides-progress class="mt-3 thumbs-swiper" slides-per-view="5" :center-slides="true" :center-insufficient-slides="true" :space-between="15" @swiper="setThumbsSwiper">
+          <swiper :modules="[Thumbs]" watch-slides-progress class="mt-3 thumbs-swiper" :slides-per-view="'auto'" :center-slides="true" :center-insufficient-slides="true" :space-between="15" @swiper="setThumbsSwiper">
             <template v-for="story in stories" :key="story.ID">
-              <swiper-slide v-show="story.image"><img :src="story.image.micro" alt="" /></swiper-slide>
+              <swiper-slide v-show="story.image" class="text-center"><img :src="story.image.micro" :alt="story.TITLE + ' thumbnail'" class="img-fluid" /></swiper-slide>
             </template>
           </swiper>
         </div>
-        <div v-else class="story-slide"><img :src="stories[slide].image.large" :alt="stories[slide].TITLE" class="img-fluid" /></div>
+        <div v-else class="story-slide text-center"><img :src="stories[slide].image.large" :alt="stories[slide].TITLE" class="img-fluid" /></div>
 
         <div class="story-info mt-5 text-center">
           <div class="story-description">{{ stories[slide].DESCRIPTION }}</div>
-          <div v-if="stories[slide].AUTHORS" class="text-center mt-3">
-            <span class="d-block mb-2"><i class="fa-solid fa-user me-2"></i>{{ stories[slide].AUTHORS }}</span>
+          <div class="text-center mt-3">
+            <span class="d-block mb-2" v-if="stories[slide].AUTHORS"><i class="fa-solid fa-user me-2"></i>{{ stories[slide].AUTHORS }}</span>
             <span class="me-2"><i class="fa-solid fa-location-dot me-2"></i>{{ stories[slide].COUNTRY }}</span>
             <span class="d-block d-md-inline-block mt-2 mt-md-0"><i class="fa-solid fa-landmark me-2"></i>{{ stories[slide].MUSEUMNAME }}</span>
           </div>

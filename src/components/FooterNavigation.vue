@@ -18,8 +18,8 @@
         </div>
       </div>
 
-      <div class="me-auto d-none d-md-block ms-4">
-        <img src="/images/irw-logo.png" alt="I Remember Water" width="180" class="img-fluid" />
+      <div class="me-auto d-none d-lg-block ms-4">
+        <a href="/"><img src="/images/irw-logo.png" alt="I Remember Water" width="180" class="img-fluid" /></a>
       </div>
 
       <div class="d-flex justify-content-between gx-3">
