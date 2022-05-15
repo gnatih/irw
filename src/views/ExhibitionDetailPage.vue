@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { computed, inject } from "@vue/runtime-core";
+import { computed, inject, nextTick } from "@vue/runtime-core";
 import { useRoute } from "vue-router";
 import first from "lodash/first";
 import findIndex from "lodash/findIndex";
@@ -52,6 +52,11 @@ export default {
     const exhibition = computed(() => first(store.state.exhibition.filter((item) => parseInt(item.UUID) == eid)));
     const exhibitions = computed(() => store.state.exhibition);
     const initialSlide = computed(() => findIndex(store.state.exhibition, (exhibit) => parseInt(exhibit.UUID) == eid));
+
+    nextTick(() => {
+      const link = document.querySelector(`[data-cat-id="Exhibition"]`);
+      link.classList.add("router-link-active");
+    });
 
     const swiperChange = (swiper) => {
       swiper.activeIndex = initialSlide.value;

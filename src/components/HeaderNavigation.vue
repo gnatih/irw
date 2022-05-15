@@ -12,7 +12,7 @@
           </li>
 
           <li class="nav-item">
-            <router-link class="nav-link" to="/exhibition">Exhibition</router-link>
+            <router-link class="nav-link" to="/exhibition" data-cat-id="Exhibition">Exhibition</router-link>
           </li>
           <li v-for="(category, index) in categories" :key="index" class="nav-item">
             <router-link class="nav-link" :to="'/category/' + category['Category']" :data-cat-id="category.Category">{{ category.Category }}</router-link>

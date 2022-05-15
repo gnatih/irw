@@ -85,7 +85,6 @@ export default {
       }
 
       nextTick(() => {
-        document.querySelector(".nav-link").classList.remove("router-link-active");
         const link = document.querySelector(`[data-cat-id="${cats[0]}"]`);
         link.classList.add("router-link-active");
       });
