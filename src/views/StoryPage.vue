@@ -21,7 +21,7 @@
               <swiper-slide v-show="story.image" class="story-slide text-center" :data-story-id="story.STORYID"><img :src="story.image.large" :alt="story.TITLE" class="img-fluid" /></swiper-slide>
             </template>
           </swiper>
-          <swiper :modules="[Thumbs]" watch-slides-progress class="mt-3 thumbs-swiper" :slides-per-view="'auto'" :center-slides="true" :center-insufficient-slides="true" :space-between="15" @swiper="setThumbsSwiper">
+          <swiper :modules="[Thumbs]" watch-slides-progress class="mt-3 thumbs-swiper" :slides-per-view="'auto'" :centered-slides="true" :space-between="15" @swiper="setThumbsSwiper">
             <template v-for="story in stories" :key="story.ID">
               <swiper-slide v-show="story.image" class="text-center"><img :src="story.image.micro" :alt="story.TITLE + ' thumbnail'" class="img-fluid" /></swiper-slide>
             </template>
