@@ -4,7 +4,7 @@
       <div class="col stories-swiper-wrapper">
         <div class="swiper-button-prev" @click="prevStory"></div>
         <div class="swiper-button-next" @click="nextStory"></div>
-        <swiper id="stories-swiper" :initial-slide="initialSlide" :slides-per-view="'auto'" :centered-slides="true" :space-between="15" class="d-none d-md-block" @swiper="swiperInit" @slide-change="changeStorySwiper">
+        <swiper id="stories-swiper" :initial-slide="initialSlide" :slides-per-view="'auto'" :centered-slides="true" :center-insufficient-slides="true" :space-between="15" class="d-none d-md-block" @swiper="swiperInit" @slide-change="changeStorySwiper">
           <swiper-slide v-for="story in all_stories" :key="story.STORYID"
             ><a :href="'/story/' + story.STORYID"><img :src="story.image.micro" /> </a
           ></swiper-slide>
@@ -21,7 +21,7 @@
               <swiper-slide v-show="story.image" class="story-slide text-center" :data-story-id="story.STORYID"><img :src="story.image.large" :alt="story.TITLE" class="img-fluid" /></swiper-slide>
             </template>
           </swiper>
-          <swiper :modules="[Thumbs]" watch-slides-progress class="mt-3 thumbs-swiper" :slides-per-view="'auto'" :centered-slides="true" :space-between="15" @swiper="setThumbsSwiper">
+          <swiper :modules="[Thumbs]" watch-slides-progress class="mt-3 thumbs-swiper" :slides-per-view="'auto'" :center-insufficient-slides="true" :space-between="15" @swiper="setThumbsSwiper">
             <template v-for="story in stories" :key="story.ID">
               <swiper-slide v-show="story.image" class="text-center"><img :src="story.image.micro" :alt="story.TITLE + ' thumbnail'" class="img-fluid" /></swiper-slide>
             </template>
@@ -43,10 +43,10 @@
 </template>
 
 <script>
-import { computed, inject, ref } from "@vue/runtime-core";
+import { computed, inject, nextTick, ref } from "@vue/runtime-core";
 import { useRoute } from "vue-router";
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Navigation, Thumbs, Lazy, FreeMode } from "swiper";
+import { Navigation, Thumbs, Lazy } from "swiper";
 import findIndex from "lodash/findIndex";
 
 import "swiper/css";
@@ -58,7 +58,9 @@ export default {
   components: { Swiper, SwiperSlide },
   beforeRouteEnter(to, from, next) {
     next((vm) => {
-      vm.store.state.category = from.params.slug;
+      if (vm.store.state.category) {
+        vm.store.state.category = from.params.slug;
+      }
     });
   },
   setup() {
@@ -78,7 +80,15 @@ export default {
         if (stories.value[0][key] == "1" && key !== "IMAGE") cats.push(key);
       }
 
-      if (cats.length) return cats[0];
+      if (cats.length) {
+        store.state.category = cats[0];
+      }
+
+      nextTick(() => {
+        document.querySelector(".nav-link").classList.remove("router-link-active");
+        const link = document.querySelector(`[data-cat-id="${cats[0]}"]`);
+        link.classList.add("router-link-active");
+      });
 
       return store.state.category;
     });
@@ -134,7 +144,6 @@ export default {
       initialSlide,
       category,
       swiperInit,
-      FreeMode,
       changeStorySwiper,
       nextStory,
       prevStory,

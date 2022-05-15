@@ -15,7 +15,7 @@
             <router-link class="nav-link" to="/exhibition">Exhibition</router-link>
           </li>
           <li v-for="(category, index) in categories" :key="index" class="nav-item">
-            <router-link class="nav-link" :to="'/category/' + category['Category']">{{ category.Category }}</router-link>
+            <router-link class="nav-link" :to="'/category/' + category['Category']" :data-cat-id="category.Category">{{ category.Category }}</router-link>
           </li>
 
           <li class="nav-item">
@@ -34,6 +34,7 @@ export default {
   setup() {
     const store = inject("store");
     const categories = computed(() => store.state.categories);
+    console.log(store);
 
     return { categories };
   },

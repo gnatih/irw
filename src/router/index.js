@@ -53,6 +53,8 @@ const router = createRouter({
 router.afterEach(() => {
   const collapsible = document.getElementById("navbarSupportedContent");
   collapsible.classList.remove("show");
+  const navlinks = document.querySelectorAll(".nav-link");
+  navlinks.forEach((item) => item.classList.remove("router-link-active"));
 });
 
 export default router;
