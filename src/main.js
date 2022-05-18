@@ -15,7 +15,7 @@ app.use(
   VueGtagPlugin,
   {
     config: {
-      id: "20YQJNJ7X8",
+      id: "G-20YQJNJ7X8",
     },
   },
   router
