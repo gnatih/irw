@@ -1,4 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { trackRouter } from "vue-gtag-next";
+
 import HomePage from "../views/HomePage.vue";
 import AboutPage from "../views/AboutPage";
 import StoryPage from "../views/StoryPage";
@@ -49,6 +51,8 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+
+trackRouter(router);
 
 router.afterEach(() => {
   const collapsible = document.getElementById("navbarSupportedContent");

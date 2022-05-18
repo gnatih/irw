@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import "bootstrap";
 import { VueMasonryPlugin } from "vue-masonry";
-import VueGtag from "vue-gtag";
+import VueGtag from "vue-gtag-next";
 
 import "./scss/style.scss";
 
@@ -14,7 +14,7 @@ app.use(VueMasonryPlugin);
 app.use(
   VueGtag,
   {
-    config: {
+    property: {
       id: "G-20YQJNJ7X8",
     },
   },
