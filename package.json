@@ -17,6 +17,7 @@
     "masonry-layout": "^4.2.2",
     "swiper": "^8.0.7",
     "vue": "^3.2.13",
+    "vue-gtag": "^2.0.1",
     "vue-masonry": "^0.14.1",
     "vue-router": "^4.0.3"
   },

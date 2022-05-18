@@ -24,7 +24,7 @@
         <div class="story-info mt-5 text-center">
           <div class="story-description">{{ exhibition.DESCRIPTION }}</div>
           <div class="mt-4">
-            <span class="d-block mb-2" v-if="exhibition.AUTHORS"><i class="fa-solid fa-user me-2"></i>{{ exhibition.AUTHORS }}</span>
+            <span v-if="exhibition.AUTHORS" class="d-block mb-2"><i class="fa-solid fa-user me-2"></i>{{ exhibition.AUTHORS }}</span>
             <span class="me-2"><i class="fa-solid fa-location-dot me-2"></i>{{ exhibition.COUNTRY }}</span>
             <span class="d-block d-md-inline-block mt-2 mt-md-0"><i class="fa-solid fa-landmark me-2"></i>{{ exhibition.MUSEUMNAME }}</span>
           </div>

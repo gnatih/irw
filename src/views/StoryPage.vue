@@ -32,7 +32,7 @@
         <div class="story-info mt-5 text-center">
           <div class="story-description">{{ stories[slide].DESCRIPTION }}</div>
           <div class="text-center mt-3">
-            <span class="d-block mb-2" v-if="stories[slide].AUTHORS"><i class="fa-solid fa-user me-2"></i>{{ stories[slide].AUTHORS }}</span>
+            <span v-if="stories[slide].AUTHORS" class="d-block mb-2"><i class="fa-solid fa-user me-2"></i>{{ stories[slide].AUTHORS }}</span>
             <span class="me-2"><i class="fa-solid fa-location-dot me-2"></i>{{ stories[slide].COUNTRY }}</span>
             <span class="d-block d-md-inline-block mt-2 mt-md-0"><i class="fa-solid fa-landmark me-2"></i>{{ stories[slide].MUSEUMNAME }}</span>
           </div>
