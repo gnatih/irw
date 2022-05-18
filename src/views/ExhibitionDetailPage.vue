@@ -55,6 +55,7 @@ export default {
 
     nextTick(() => {
       const link = document.querySelector(`[data-cat-id="Exhibition"]`);
+      document.title = "Exhibition | " + exhibition.value.CATEGORY + " | I Remember Water";
       link.classList.add("router-link-active");
     });
 

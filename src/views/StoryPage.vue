@@ -82,7 +82,7 @@ export default {
 
       if (cats.length) {
         store.state.category = cats[0];
-        document.title = "Category: " + cats[0] + " | I Remember Water";
+        document.title = "Category | " + cats[0] + " | I Remember Water";
       }
 
       nextTick(() => {
